@@ -21,18 +21,21 @@ public class TeleportLocation extends Location
 	private final int _priceId;
 	private final int _priceCount;
 	private final int _castleId;
-	
-	public TeleportLocation(StatSet set)
-	{
-		super(set.getInteger("x"), set.getInteger("y"), set.getInteger("z"));
-		
-		_descEn = set.getString("descEn");
-		_descRu = set.getString("descRu");
-		_type = set.getEnum("type", TeleportType.class, TeleportType.STANDARD);
-		_priceId = set.getInteger("priceId");
-		_priceCount = set.getInteger("priceCount");
-		_castleId = set.getInteger("castleId", 0);
-	}
+
+    public TeleportLocation(StatSet set)
+    {
+        super(set.getInteger("x"), set.getInteger("y"), set.getInteger("z"));
+
+        _descEn = set.getString("descEn");
+        // Torna descRu opcional
+        _descRu = set.getString("descRu", "");
+
+        _type = set.getEnum("type", TeleportType.class, TeleportType.STANDARD);
+        _priceId = set.getInteger("priceId");
+        _priceCount = set.getInteger("priceCount");
+        _castleId = set.getInteger("castleId", 0);
+    }
+
 	
 	@Override
 	public String toString()
